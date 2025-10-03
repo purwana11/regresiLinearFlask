@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance Prediction</title>
+    <style>
+        body { font-family: Arial; margin: 40px; background: #f2f2f2; }
+        .container { background: white; padding: 20px; border-radius: 10px; width: 400px; margin: auto; }
+        input, select { width: 100%; padding: 8px; margin: 8px 0; }
+        button { background: #4CAF50; color: white; padding: 10px; border: none; cursor: pointer; }
+        button:hover { background: #45a049; }
+        .result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Prediksi Student Performance Index</h2>
+        <form action="/predict" method="POST">
+            <label>Hours Studied</label>
+            <input type="number" step="any" name="hours" required>
+
+            <label>Previous Scores</label>
+            <input type="number" step="any" name="prev_scores" required>
+
+            <label>Extracurricular Activities</label>
+            <select name="extracurricular">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label>Sleep Hours</label>
+            <input type="number" step="any" name="sleep_hours" required>
+
+            <label>Sample Question Papers Practiced</label>
+            <input type="number" step="any" name="papers" required>
+
+            <button type="submit">Prediksi</button>
+        </form>
+
+        {% if result %}
+            <div class="result">{{ result }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
